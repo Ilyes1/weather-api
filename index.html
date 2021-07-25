@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <form>
+        <input type="text" placeholder="City name...">
+        <button type="submit">Get</button>
+    </form>
+
+    <h2></h2>
+
+    <script>
+        $(document).ready(function() {
+
+            $('form').on('submit', function(e) {
+                e.preventDefault()
+                $.get(`http://api.openweathermap.org/data/2.5/weather?q=${$('input').val()}&appid=923401310fb8f2a8c1dcb3796e756328`, (data) => {
+                    $('h2').text(data.main.temp)
+                })
+            })
+
+        })
+    </script>
+
+</body>
+</html>
